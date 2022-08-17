@@ -2,7 +2,7 @@ import pokemonApi from "@/api/PokemonApi";
 
 
 
-const getPokemons = () => {
+export const getPokemons = () => {
     //Creamos un arreglo de 650 espacios
     const pokemonsArr = Array.from( Array(650));
     //Numeramos de 1 a 650
@@ -18,7 +18,7 @@ const getPokemonsOptions = async () => {
     return pokemons
 }
 
-const getPokemonsNames = async ( [a,b,c,d] = [] ) => {
+export const getPokemonsNames = async ( [a,b,c,d] = [] ) => {
     //Realizamos las 4 peticiones 
     const promiseArr = [
         pokemonApi.get(`/${a}`),
