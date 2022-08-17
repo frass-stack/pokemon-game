@@ -4,6 +4,10 @@
         <h2>¿Quien es ese Pokemon?</h2>
         <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
         <PokemonOptions :pokemons="pokemonArr" @selecction="checkAnswer" />
+        <template v-if="showAnswer" >
+            <h2>{{ message }}</h2>
+            <button @click="newGame">Nuevo Juego</button>
+        </template>
     </div>
 </template>
 
@@ -23,7 +27,9 @@ export default {
         return {
             pokemonArr: [],
             pokemon: null,
-            showPokemon: false
+            showPokemon: false,
+            showAnswer: false,
+            message: ''
         }
     },
     methods: {
@@ -36,10 +42,23 @@ export default {
             this.pokemon = this.pokemonArr[rnInt]
         },
         checkAnswer( pokemonId ){
+            this.showPokemon = true
+            this.showAnswer = true
             console.log(pokemonId)
             if(pokemonId === this.pokemon.id){
-                this.showPokemon = true
+                this.message = `Correcto! Era ${this.pokemon.name}!`
+                setTimeout( () => this.newGame(), 3000)
+            }else{
+                this.message = `Oops, era ${this.pokemon.name}...`
+                setTimeout( () => this.newGame(), 3000)
             }
+        },
+        newGame(){
+            this.showPokemon = false
+            this.showAnswer = false
+            this.pokemonArr = []
+            this.pokemon = null
+            this.mixPokemonArr()
         }
     },
     mounted(){
