@@ -3,7 +3,7 @@
     <div v-else >
         <h2>¿Quien es ese Pokemon?</h2>
         <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
-        <PokemonOptions :pokemons="pokemonArr" />
+        <PokemonOptions :pokemons="pokemonArr" @selecction="checkAnswer" />
     </div>
 </template>
 
@@ -34,6 +34,12 @@ export default {
             const rnInt = Math.floor( Math.random() * 4 )
             //Asignamos la posicion correcta a el pokemon
             this.pokemon = this.pokemonArr[rnInt]
+        },
+        checkAnswer( pokemonId ){
+            console.log(pokemonId)
+            if(pokemonId === this.pokemon.id){
+                this.showPokemon = true
+            }
         }
     },
     mounted(){
