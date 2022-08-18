@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonPage Component Debe hacer snapshot con una vez montado el componente 1`] = `
+<div>
+  <h2>¿Quien es ese Pokemon?</h2>
+  <pokemon-picture-stub pokemonid="5" showpokemon="false"></pokemon-picture-stub>
+  <pokemon-options-stub pokemons="[object Object],[object Object],[object Object],[object Object]"></pokemon-options-stub>
+  <!--v-if-->
+</div>
+`;
